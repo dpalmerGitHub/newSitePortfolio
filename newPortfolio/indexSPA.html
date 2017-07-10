@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<style>
+    html {
+        height: 100%;
+        width: 100%;
+    }
+    
+    body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-image: url("C:\\Users\\danpal01\\Desktop\\newPortfolio\\new_york_city_2-wallpaper-960x540_zpsce336d7f.jpg");
+        background-repeat: no-repeat;
+        background-color: #000;
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .myNav {
+        background-color: #1C2331;
+        height: 80px;
+        width: 100%;
+        position: fixed;
+        z-index: 1000;
+        color: #fff;
+    }
+    
+    .myNav ul li {
+        display: inline-block;
+        list-style: none;
+        margin-top: 25px;
+        padding-left: 50px;
+    }
+    
+    .floatRight {
+        float: right;
+        margin-right: 50px;
+    }
+    
+    .floatLeft {
+        float: left;
+    }
+    
+    .box {
+        border: solid thin #ccc;
+        height: 250px;
+        text-align: center;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, .8);
+        transform: translateX(-10000px);
+        transition-timing-function: ease-in;
+        color: #1C2331;
+        overflow-y: auto;
+    }
+    
+    .box2 {
+        border: solid thin #ccc;
+        height: 250px;
+        text-align: center;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, .8);
+        color: #1C2331;
+    }
+    
+    .styleGlyphicon {
+        font-size: 18px;
+        color: white;
+    }
+    
+    .boxHeader {
+        border-bottom: solid thin #ccc;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    .wrapper {
+        background-color: rgba(255, 255, 255, .6);
+        height: 100%;
+        width: 100%;
+        padding-top: 200px;
+        padding-bottom: 200px;
+    }
+    
+    .largerFont {
+        font-size: 16px;
+    }
+    
+    #mainMenu {
+        position: fixed;
+        bottom: 0;
+        background-color: #1C2331;
+        color: #fff;
+        height: 50%;
+        width: 100%;
+    }
+    
+    .hideMenu {
+        transform: translateY(10000px);
+    }
+    
+    #closeMainMenu {
+        float: right;
+        background-color: #1C2331;
+        color: #fff;
+        border-style: none;
+        padding: 25px;
+    }
+    
+    #closeMainMenu:focus {
+        outline: none;
+    }
+    
+    .showMenu {
+        transform: translateY(0);
+        transition: transform .4s;
+    }
+    
+    .hideme {
+        opacity: 0;
+    }
+    
+    .wrapper2 {
+        height: 100%;
+        width: 100%;
+        padding-top: 200px;
+        padding-bottom: 200px;
+    }
+</style>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <nav class='myNav'>
+            <div class="floatLeft">
+                <ul>
+                    <li>
+                        <a href="">
+                            <span class="glyphicon glyphicon-menu-hamburger styleGlyphicon menu"></span>
+                        </a>
+                    </li>
+                    <li>{{title}}</li>
+                </ul>
+            </div>
+            <div class='floatRight'>
+                <ul>
+                    <li>About</li>
+                    <li>Contact</li>
+                    <li>Resume</li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <div class="wrapper">
+            <div class="container initContainer">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class='box'>
+                            {{filler}}
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class='box'>
+                            <header class="boxHeader">Header</header>
+                            <p>{{filler}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper2">
+            <div class="container secondaryContainer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class='box2 hideme'>
+                            {{filler}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="container initContainer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class='box2 hideme'>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class='box2 hideme'>
+                            <header class="boxHeader">Header</header>
+                            <p>{{filler}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="mainMenu" class="hideMenu">
+            <button id="closeMainMenu"><span class = "glyphicon glyphicon-remove"></span></button>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".box").css({
+                "transform": "translateX(0)",
+                "transition": "transform .8s",
+            });
+
+
+            $(".menu").on("click", function() {
+                $("#mainMenu").toggleClass("showMenu");
+
+            });
+
+            $("#closeMainMenu,.wrapper").on("click", function() {
+                $("#mainMenu").toggleClass("showMenu");
+            });
+
+            $(window).scroll(function() {
+                $('.hideme').each(function(i) {
+
+                    var bottom_of_object = $(this).position().top + $(this).outerHeight();
+                    var bottom_of_window = $(window).scrollTop() + $(window).height();
+                    if (bottom_of_window > bottom_of_object) {
+
+                        $(this).animate({
+                            'opacity': '1'
+                        }, 2000);
+
+                    }
+
+                });
+
+            });
+
+
+
+
+        });
+
+
+        var app = angular.module("myApp", ["ngSanitize"]);
+        app.controller("myCtrl", function($scope) {
+            $scope.title = "Daniel Palmer";
+            $scope.introduction = "<header class = 'boxHeader'><h2>A Little About Me</h2></header><p class = 'largerFont'><b>My name is Daniel Palmer, an Application Support Analyst/ ServiceNow Admin/Developer by day, and a freelance front-end web developer by night. I have experience in HTML, CSS, Javascript, JQuery, and AngularJS, and have utilized these skills in a production environment.</b></p>";
+            $scope.updates = "There are no current updates at this time. Please check back again later";
+            $scope.filler = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+        });
+    </script>
+
+</body>
+
+</html>
